@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import ListCard from './ListCard';
+import MovieListCard from './MovieListCard';
 
 class Lists extends Component {
     constructor() {
@@ -30,7 +30,7 @@ class Lists extends Component {
                 <h1>Your Lists</h1>
                 {this.state.movie_lists.map( (movie_list) => {
                     return (
-                        <ListCard key={movie_list.id} movie_list={movie_list} />
+                        <MovieListCard key={movie_list.id} movie_list={movie_list} />
                     )
                 })}
             </div>
