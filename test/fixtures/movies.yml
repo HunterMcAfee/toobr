@@ -3,7 +3,7 @@
 one:
   genres: MyString
   homepage: MyString
-  id: 1
+  movie_id: 1
   original_title: MyString
   overview: MyString
   poster_path: MyString
@@ -12,11 +12,12 @@ one:
   tagline: MyString
   video: false
   vote_average: 1
+  movie_list: one
 
 two:
   genres: MyString
   homepage: MyString
-  id: 1
+  movie_id: 1
   original_title: MyString
   overview: MyString
   poster_path: MyString
@@ -25,3 +26,4 @@ two:
   tagline: MyString
   video: false
   vote_average: 1
+  movie_list: two

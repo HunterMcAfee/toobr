@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909190243) do
+ActiveRecord::Schema.define(version: 20170909200325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20170909190243) do
   end
 
   create_table "movies", force: :cascade do |t|
-    t.bigint "movie_lists_id"
     t.string "genres"
     t.string "homepage"
     t.integer "movie_id"
@@ -36,9 +35,11 @@ ActiveRecord::Schema.define(version: 20170909190243) do
     t.string "tagline"
     t.boolean "video"
     t.integer "vote_average"
+    t.bigint "movie_list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_lists_id"], name: "index_movies_on_movie_lists_id"
+    t.index ["movie_list_id"], name: "index_movies_on_movie_list_id"
   end
 
+  add_foreign_key "movies", "movie_lists"
 end

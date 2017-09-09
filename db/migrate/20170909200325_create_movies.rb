@@ -1,7 +1,6 @@
 class CreateMovies < ActiveRecord::Migration[5.1]
   def change
     create_table :movies do |t|
-      t.references :movie_lists
       t.string :genres
       t.string :homepage
       t.integer :movie_id
@@ -13,6 +12,7 @@ class CreateMovies < ActiveRecord::Migration[5.1]
       t.string :tagline
       t.boolean :video
       t.integer :vote_average
+      t.references :movie_list, foreign_key: true
 
       t.timestamps
     end
