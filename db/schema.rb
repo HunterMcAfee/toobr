@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170909190243) do
   end
 
   create_table "movies", force: :cascade do |t|
+    t.bigint "movie_lists_id"
     t.string "genres"
     t.string "homepage"
     t.integer "movie_id"
@@ -37,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170909190243) do
     t.integer "vote_average"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["movie_lists_id"], name: "index_movies_on_movie_lists_id"
   end
 
 end
