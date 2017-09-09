@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  genres: MyString
+  homepage: MyString
+  id: 1
+  original_title: MyString
+  overview: MyString
+  poster_path: MyString
+  release_date: MyString
+  runtime: 1
+  tagline: MyString
+  video: false
+  vote_average: 1
+
+two:
+  genres: MyString
+  homepage: MyString
+  id: 1
+  original_title: MyString
+  overview: MyString
+  poster_path: MyString
+  release_date: MyString
+  runtime: 1
+  tagline: MyString
+  video: false
+  vote_average: 1
