@@ -12,4 +12,13 @@ class Api::MovieListsController < ApplicationController
             movies: @movies
         }
     end
+
+    def create
+        @movie_list = MovieList.create!(movie_list_params)
+    end
+
+    private
+    def movie_list_params
+        params.require(:movie_list).permit(:title, :category, :description)
+    end
 end
