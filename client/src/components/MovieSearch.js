@@ -33,7 +33,7 @@ class MovieSearch extends Component {
         const id = this.props.match.params.id
         return (
             <div>
-                <h1>Search for Movies</h1>
+                <h1>Search for Movie</h1>
                 <form>
                     <div>
                         <label htmlFor="search">Search: </label>
