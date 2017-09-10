@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class NewMovieList extends Component {
     constructor() {
@@ -47,6 +48,8 @@ class NewMovieList extends Component {
                     </div>
                     <button onClick={this._newMovieList}>Submit</button>
                 </form>
+                <br />
+                <Link to={`/`}><button>Back</button></Link>
             </div>
         );
     }

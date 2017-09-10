@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class EditMovieList extends Component {
     constructor() {
@@ -47,6 +48,7 @@ class EditMovieList extends Component {
     }
 
     render() {
+        const id = this.state.movie_list.id
         return (
             <div>
                 <form>
@@ -64,6 +66,8 @@ class EditMovieList extends Component {
                     </div>
                     <button onClick={this._editMovieList}>Submit</button>
                 </form>
+                <br />
+                <Link to={`/movie_lists/${id}`}><button>Back</button></Link>
             </div>
         );
     }

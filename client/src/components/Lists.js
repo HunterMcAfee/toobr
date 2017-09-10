@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import MovieListCard from './MovieListCard';
+import { Link } from 'react-router-dom';
 
 class Lists extends Component {
     constructor() {
@@ -28,6 +29,7 @@ class Lists extends Component {
         return (
             <div>
                 <h1>Your Lists</h1>
+                <Link to={`/newMovieList`}><button>New Movie List</button></Link>
                 {this.state.movie_lists.map( (movie_list) => {
                     return (
                         <MovieListCard key={movie_list.id} movie_list={movie_list} />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import MovieCard from './MovieCard';
+import { Link } from 'react-router-dom';
 
 class MovieList extends Component {
     constructor() {
@@ -39,8 +40,10 @@ class MovieList extends Component {
     }
 
     render() {
+        const id = this.state.movie_list.id
         return (
             <div>
+                <Link to={`/movie_lists/${id}/edit`}><button>Edit</button></Link>
                 <h1>{this.state.movie_list.title}</h1>
                 <h3>Category: {this.state.movie_list.category}</h3>
                 <p>Description: {this.state.movie_list.description}</p>
@@ -50,6 +53,8 @@ class MovieList extends Component {
                     )
                 })}
                 <button onClick={this._deleteMovieList}>Delete List</button>
+                <br />
+                <Link to={`/`}><button>Back</button></Link>
             </div>
         );
     }
