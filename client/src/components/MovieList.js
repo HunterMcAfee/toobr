@@ -26,6 +26,18 @@ class MovieList extends Component {
         }
     }
 
+    _deleteMovieList = (e) => {
+        e.preventDefault();
+        const id = this.props.match.params.id
+        try {
+            const res = axios.delete(`/api/movie_lists/${id}`);
+            return res.data;
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
     render() {
         return (
             <div>
@@ -37,6 +49,7 @@ class MovieList extends Component {
                         <MovieCard key={movie.id} movie={movie} />
                     )
                 })}
+                <button onClick={this._deleteMovieList}>Delete List</button>
             </div>
         );
     }
