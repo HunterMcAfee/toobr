@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class NewMovieList extends Component {
+class EditMovieList extends Component {
     constructor() {
         super();
         this.state = {
@@ -13,17 +13,34 @@ class NewMovieList extends Component {
         }
     }
 
+    componentWillMount() {
+        this._fetchMovieList()
+    }
+    
+    _fetchMovieList = async () => {
+        const id = this.props.match.params.id
+        try {
+            const res = await axios.get(`/api/movie_lists/${id}`);
+            await this.setState({movie_list: res.data.movie_list});
+            return res.data;
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
     _handleChange = (e) => {
         const newState = {...this.state.movie_list}
         newState[e.target.name] = e.target.value
         this.setState({movie_list: newState})
     }
 
-    _newMovieList = (e) => {
+    _editMovieList = (e) => {
         e.preventDefault();
+        const id = this.props.match.params.id
         const payload = this.state.movie_list
         try {
-            const res = axios.post(`/api/movie_lists`, payload)
+            const res = axios.patch(`/api/movie_lists/${id}`, payload)
         } catch (err) {
             console.log(err)
         }
@@ -45,11 +62,11 @@ class NewMovieList extends Component {
                         <label htmlFor="description">Descripton: </label>
                         <input onChange={this._handleChange} type="text" name="description" value={this.state.movie_list.description} />
                     </div>
-                    <button onClick={this._newMovieList}>Submit</button>
+                    <button onClick={this._editMovieList}>Submit</button>
                 </form>
             </div>
         );
     }
 }
 
-export default NewMovieList;
+export default EditMovieList;

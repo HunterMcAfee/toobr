@@ -17,6 +17,16 @@ class Api::MovieListsController < ApplicationController
         @movie_list = MovieList.create!(movie_list_params)
     end
 
+    def update
+        @movie_list = MovieList.find(params[:id])
+        @movie_list.update!(movie_list_params)
+    end
+
+    def destroy
+        @movie_list = MovieList.find(params[:id])
+        @movie_list.destroy
+    end
+
     private
     def movie_list_params
         params.require(:movie_list).permit(:title, :category, :description)
