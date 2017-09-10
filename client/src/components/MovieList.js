@@ -47,6 +47,7 @@ class MovieList extends Component {
                 <h1>{this.state.movie_list.title}</h1>
                 <h3>Category: {this.state.movie_list.category}</h3>
                 <p>Description: {this.state.movie_list.description}</p>
+                <Link to={`/movie_lists/${id}/search`}><button>Add Movie by Search</button></Link>
                 {this.state.movies.map( (movie) => {
                     return (
                         <MovieCard key={movie.id} movie={movie} />

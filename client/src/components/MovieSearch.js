@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import MovieCard from './MovieCard';
+import { Link } from 'react-router-dom';
 
 class MovieSearch extends Component {
     constructor() {
@@ -29,6 +30,7 @@ class MovieSearch extends Component {
     }
 
     render() {
+        const id = this.props.match.params.id
         return (
             <div>
                 <h1>Search for Movies</h1>
@@ -45,6 +47,7 @@ class MovieSearch extends Component {
                     )
                     })}
                 </form>
+                <Link to={`/movie_lists/${id}`}><button>Back</button></Link>
             </div>
         );
     }
