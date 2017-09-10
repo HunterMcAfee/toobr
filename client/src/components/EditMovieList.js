@@ -61,7 +61,7 @@ class EditMovieList extends Component {
                         <input onChange={this._handleChange} type="text" name="category" value={this.state.movie_list.category} />
                     </div>
                     <div>
-                        <label htmlFor="description">Descripton: </label>
+                        <label htmlFor="description">Description: </label>
                         <input onChange={this._handleChange} type="text" name="description" value={this.state.movie_list.description} />
                     </div>
                     <button onClick={this._editMovieList}>Submit</button>
