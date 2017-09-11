@@ -1,11 +1,7 @@
 class Api::MoviesController < ApplicationController
     def show
-        @movie_list = MovieList.find(params[:id])
-        @movies = @movie_list.movies
-        render json: {
-            movie_list: @movie_list,
-            movies: @movies
-        }
+        @movie = Movie.find(params[:id])
+        render json: @movie
     end
 
     def create

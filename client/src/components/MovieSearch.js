@@ -26,8 +26,17 @@ class MovieSearch extends Component {
     _addMovie = (movie) => {
         const id = this.props.match.params.id
         const payload ={
-            movie: movie,
-            movie_list_id: id
+            genres: movie.genres,
+            homepage: movie.homepage, 
+            movie_id: movie.id, 
+            original_title: movie.original_title, 
+            overview: movie.overview, 
+            poster_path: movie.poster_path, 
+            release_date: movie.release_date, 
+            runtime: movie.runtime, 
+            tagline: movie.tagline, 
+            video: movie.video, 
+            vote_average: movie.vote_average
         }
         try {
             const res = axios.post(`/api/movie_lists/${id}/movies`, payload)
