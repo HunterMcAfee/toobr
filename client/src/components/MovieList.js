@@ -50,7 +50,10 @@ class MovieList extends Component {
                 <Link to={`/movie_lists/${id}/search`}><button>Add Movie by Search</button></Link>
                 {this.state.movies.map( (movie) => {
                     return (
+                        <div key={movie.id}>
                         <MovieCard key={movie.id} movie={movie} />
+                        <Link to={`/movie_lists/${id}/movies/${movie.id}`}><button>View Movie</button></Link>
+                        </div>
                     )
                 })}
                 <button onClick={this._deleteMovieList}>Delete List</button>
