@@ -34,6 +34,18 @@ class Movie extends Component {
         }
     }
 
+    _deleteMovie = (e) => {
+        e.preventDefault();
+        const id = this.props.match.params.movie_list_id
+        try {
+            const res = axios.delete(`/api/movie_lists/${id}/movies/${this.state.movieDB.id}`);
+            return res;
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
     render() {
         const id = this.props.match.params.movie_list_id
         return (
@@ -46,6 +58,7 @@ class Movie extends Component {
                 <div>Rating: {this.state.movie.vote_average}</div>
                 <div>Home Page: {this.state.movie.homepage}</div>
                 <div>Runtime: {this.state.movie.runtime}</div>
+                <button onClick={this._deleteMovie}>Delete Movie</button>
                 <Link to={`/movie_lists/${id}`}><button>Back</button></Link>
             </div>
         );
