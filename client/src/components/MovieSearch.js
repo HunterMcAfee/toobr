@@ -25,12 +25,15 @@ class MovieSearch extends Component {
 
     _addMovie = (movie) => {
         const id = this.props.match.params.id
-        console.log(movie)
-        // try {
-        //     const res = axios.post(`/api/movie_lists/${id}/movies`, payload)
-        // } catch (err) {
-        //     console.log(err);
-        // }
+        const payload ={
+            movie: movie,
+            movie_list_id: id
+        }
+        try {
+            const res = axios.post(`/api/movie_lists/${id}/movies`, payload)
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     _handleChange = (e) => {
@@ -54,7 +57,7 @@ class MovieSearch extends Component {
                     <h3>Movies:</h3>
                     {this.state.movies.map( (movie) => {
                     return (
-                        <div>
+                        <div key={movie.id}>
                         <MovieCard key={movie.id} movie={movie} />
                         <button onClick={() => this._addMovie(movie)}>Add Movie to List</button>
                         </div>
@@ -67,3 +70,4 @@ class MovieSearch extends Component {
 }
 
 export default MovieSearch;
+

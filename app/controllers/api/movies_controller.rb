@@ -9,8 +9,8 @@ class Api::MoviesController < ApplicationController
     end
 
     def create
-        @movie_list = MovieList.find(params[:id])
-        @movie = @movie_list.movies.create!(movie_params)
+        @movie_list = MovieList.find(params[:movie_list_id])
+        @movie_list.movies.create(movie_params)
     end
 
     def destroy
@@ -20,6 +20,6 @@ class Api::MoviesController < ApplicationController
 
     private
     def movie_params
-        params.require(:movie_list).permit(:genres, :homepage, :movie_id, :original_title, :overview, :poster_path, :release_date, :runtime, :tagline, :video, :vote_average)
+        params.require(:movie).permit(:genres, :homepage, :movie_id, :original_title, :overview, :poster_path, :release_date, :runtime, :tagline, :video, :vote_average)
     end
 end
