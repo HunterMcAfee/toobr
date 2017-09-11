@@ -23,6 +23,16 @@ class MovieSearch extends Component {
         }
     }
 
+    _addMovie = (movie) => {
+        const id = this.props.match.params.id
+        console.log(movie)
+        // try {
+        //     const res = axios.post(`/api/movie_lists/${id}/movies`, payload)
+        // } catch (err) {
+        //     console.log(err);
+        // }
+    }
+
     _handleChange = (e) => {
         const newState = {...this.state}
         newState[e.target.name] = e.target.value
@@ -40,13 +50,16 @@ class MovieSearch extends Component {
                         <input onChange={this._handleChange} type="text" name="search" value={this.state.search} />
                     </div>
                     <button onClick={this._searchMovie}>Submit</button>
+                </form>
                     <h3>Movies:</h3>
                     {this.state.movies.map( (movie) => {
                     return (
+                        <div>
                         <MovieCard key={movie.id} movie={movie} />
+                        <button onClick={() => this._addMovie(movie)}>Add Movie to List</button>
+                        </div>
                     )
                     })}
-                </form>
                 <Link to={`/movie_lists/${id}`}><button>Back</button></Link>
             </div>
         );
