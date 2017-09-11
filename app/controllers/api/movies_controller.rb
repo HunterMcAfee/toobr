@@ -10,8 +10,8 @@ class Api::MoviesController < ApplicationController
     end
 
     def destroy
-        @movie_list = MovieList.find(params[:id])
-        @movie_list.destroy
+        @movie = Movie.find(params[:id])
+        @movie.destroy
     end
 
     private
