@@ -12,26 +12,34 @@ class Movie extends Component {
     }
 
     componentWillMount() {
-        this._fetchMovieDB()
+        this._fetchMovie();
     }
 
-    _fetchMovieDB = async () => {
+    _fetchMovie = async () => {
         const listId = this.props.match.params.movie_list_id
         const movieId = this.props.match.params.movie_id
         try {
             const res = await axios.get(`/api/movie_lists/${listId}/movies/${movieId}`)
             this.setState({movieDB: res.data})
+            
         } catch (err) {
             console.log(err);
         }
+        try {
+            const res = await axios.get(`https://api.themoviedb.org/3/movie/${this.state.movieDB.movie_id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+            this.setState({movie: res.data})
+            
+        } catch (err) {
+            console.log(err);
+        }
+        
     }
 
-    // _fetchMovie = async (e) => {
-    //     e.preventDefault();
-    //     const search = this.state.search
+    // _fetchMovieAPI = async () => {
+    //     console.log(this.state.movieDB)
     //     try {
-    //         const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${search}`)
-    //         this.setState({movies: res.data.results})
+    //         const res = await axios.get(`https://api.themoviedb.org/3/movie/${this.state.movieDB.movie_id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+    //         this.setState({movie: res.data.results})
     //     } catch (err) {
     //         console.log(err);
     //     }
