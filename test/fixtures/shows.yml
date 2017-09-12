@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  show_id: 1
+  original_name: MyString
+  vote_average: 1
+  poster_path: MyString
+  overview: MyString
+  backdrop_path: MyString
+  show_list: one
+
+two:
+  show_id: 1
+  original_name: MyString
+  vote_average: 1
+  poster_path: MyString
+  overview: MyString
+  backdrop_path: MyString
+  show_list: two
