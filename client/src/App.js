@@ -13,6 +13,7 @@ import ShowList from './components/ShowList';
 import NewShowList from './components/NewShowList';
 import EditShowList from './components/EditShowList';
 import ShowSearch from './components/ShowSearch';
+import Show from './components/Show';
 
 class App extends Component {
   render() {
@@ -31,6 +32,7 @@ class App extends Component {
           <Route exact path="/newShowList" component={NewShowList} />
           <Route exact path="/show_lists/:id/edit" component={EditShowList} />
           <Route exact path="/show_lists/:id/search" component={ShowSearch} />
+          <Route exact path="/show_lists/:show_list_id/shows/:show_id" component={Show} />
         </div>
       </Router>
     );
