@@ -10,6 +10,7 @@ import MovieSearch from './components/MovieSearch';
 import Movie from './components/Movie';
 
 import ShowList from './components/ShowList';
+import NewShowList from './components/NewShowList';
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
           <Route exact path="/movie_lists/:movie_list_id/movies/:movie_id" component={Movie} />
 
           <Route exact path="/show_lists/:id" component={ShowList} />
+          <Route exact path="/newShowList" component={NewShowList} />
         </div>
       </Router>
     );
