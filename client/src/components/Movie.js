@@ -26,9 +26,19 @@ class Movie extends Component {
             console.log(err);
         }
         try {
-            const res = await axios.get(`https://api.themoviedb.org/3/movie/${this.state.movieDB.movie_id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
-            this.setState({movie: res.data})
-            
+            const url = `https://api.themoviedb.org/3/movie/${this.state.movieDB.movie_id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+            const res = await axios.get(url, 
+              { transformRequest: [(data, headers) => {
+                delete headers['access-token']
+                delete headers['uid']
+                delete headers['client']
+                delete headers['expiry']
+                delete headers['token-type']
+                delete headers.common
+                return data;
+              }]
+            });
+            await this.setState({movie: res.data}) 
         } catch (err) {
             console.log(err);
         }

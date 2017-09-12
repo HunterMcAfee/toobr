@@ -15,9 +15,20 @@ class MovieSearch extends Component {
     _searchMovie = async (e) => {
         e.preventDefault();
         const search = this.state.search
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${search}`
         try {
-            const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${search}`)
-            this.setState({movies: res.data.results})
+            const res = await axios.get(url, 
+              { transformRequest: [(data, headers) => {
+                delete headers['access-token']
+                delete headers['uid']
+                delete headers['client']
+                delete headers['expiry']
+                delete headers['token-type']
+                delete headers.common
+                return data;
+              }]
+            });
+            await this.setState({movies: res.data.results})
         } catch (err) {
             console.log(err);
         }
