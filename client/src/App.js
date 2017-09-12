@@ -11,6 +11,7 @@ import Movie from './components/Movie';
 
 import ShowList from './components/ShowList';
 import NewShowList from './components/NewShowList';
+import EditShowList from './components/EditShowList';
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
 
           <Route exact path="/show_lists/:id" component={ShowList} />
           <Route exact path="/newShowList" component={NewShowList} />
+          <Route exact path="/show_lists/:id/edit" component={EditShowList} />
         </div>
       </Router>
     );
