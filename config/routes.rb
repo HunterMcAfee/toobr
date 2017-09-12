@@ -4,4 +4,10 @@ Rails.application.routes.draw do
       resources :movies
     end
   end
+
+  namespace :api do
+    resources :show_lists do
+      resources :shows
+    end
+  end
 end
