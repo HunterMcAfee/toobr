@@ -1,4 +1,5 @@
 class Api::ShowsController < ApplicationController
+    before_action :authenticate_user!
     def show
         @show = Show.find(params[:id])
         render json: @show

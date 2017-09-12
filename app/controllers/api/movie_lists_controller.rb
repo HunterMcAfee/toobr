@@ -1,4 +1,5 @@
 class Api::MovieListsController < ApplicationController
+    before_action :authenticate_user!
     def index
         @movie_lists = MovieList.all
         render json: @movie_lists

@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
+import NavBar from './components/NavBar';
+
+import SignUp from './components/SignUp';
+import SignIn from './components/SignIn';
+
 import Lists from './components/Lists';
 
 import MovieList from './components/MovieList';
@@ -20,6 +25,11 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <NavBar />
+
+          <Route exact path="/signUp" component={SignUp} />
+          <Route exact path="/signIn" component={SignIn} />
+
           <Route exact path="/" component={Lists} />
 
           <Route exact path="/movie_lists/:id" component={MovieList} />

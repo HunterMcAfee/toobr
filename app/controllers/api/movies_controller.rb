@@ -1,4 +1,5 @@
 class Api::MoviesController < ApplicationController
+    before_action :authenticate_user!
     def show
         @movie = Movie.find(params[:id])
         render json: @movie

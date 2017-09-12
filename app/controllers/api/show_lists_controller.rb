@@ -1,4 +1,5 @@
 class Api::ShowListsController < ApplicationController
+    before_action :authenticate_user!
     def index
         @show_lists = ShowList.all
         render json: @show_lists
