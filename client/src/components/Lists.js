@@ -29,6 +29,7 @@ class Lists extends Component {
         return (
             <div>
                 <h1>Your Lists</h1>
+                <h3>Movie Lists:</h3>
                 <Link to={`/newMovieList`}><button>New Movie List</button></Link>
                 {this.state.movie_lists.map( (movie_list) => {
                     return (
