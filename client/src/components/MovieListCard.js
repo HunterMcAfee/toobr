@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ListCard = (props) => {
+const MovieListCard = (props) => {
     const movie_list = props.movie_list
     return (
         <div>
@@ -13,4 +13,4 @@ const ListCard = (props) => {
     );
 };
 
-export default ListCard;
+export default MovieListCard;
