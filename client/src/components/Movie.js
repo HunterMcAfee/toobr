@@ -60,6 +60,7 @@ class Movie extends Component {
         const id = this.props.match.params.movie_list_id
         return (
             <div>
+                <img src={`https://image.tmdb.org/t/p/w1000${this.state.movie.poster_path}`} />
                 <h2>Title: {this.state.movie.original_title}</h2>
                 <div>Tagline: {this.state.movie.tagline}</div>
                 <div>Overview: {this.state.movie.overview}</div>

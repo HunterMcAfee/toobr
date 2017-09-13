@@ -60,10 +60,12 @@ class Show extends Component {
         const id = this.props.match.params.show_list_id
         return (
             <div>
+                <img src={`https://image.tmdb.org/t/p/w1000${this.state.show.poster_path}`} />
                 <h2>Title: {this.state.show.original_name}</h2>
                 <div>Tagline: {this.state.show.tagline}</div>
                 <div>Overview: {this.state.show.overview}</div>
-                <div>First Air Date: {this.state.show.first_air_date}</div>                <div>Rating: {this.state.show.vote_average}</div>
+                <div>First Air Date: {this.state.show.first_air_date}</div>
+                <div>Rating: {this.state.show.vote_average}</div>
                 <div>Home Page: {this.state.show.homepage}</div>
                 <div>Number of Seasons: {this.state.show.number_of_seasons}</div>
                 <button onClick={this._deleteShow}>Delete Show</button>
