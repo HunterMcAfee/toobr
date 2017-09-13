@@ -1,7 +1,8 @@
 class Api::ShowListsController < ApplicationController
     before_action :authenticate_user!
     def index
-        @show_lists = ShowList.all
+        @user = User.find(current_user.id)
+        @show_lists = @user.show_lists
         render json: @show_lists
     end
 
@@ -15,7 +16,8 @@ class Api::ShowListsController < ApplicationController
     end
 
     def create
-        @show_list = ShowList.create!(show_list_params)
+        @user = User.find(current_user.id)
+        @user.show_lists.create!(show_list_params)
     end
 
     def update
