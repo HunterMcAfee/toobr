@@ -4,13 +4,13 @@ import axios from "axios";
 import styled from "styled-components";
 
 const Nav = styled.div`
-  width: 95%;
+  width: 100%;
   height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2.5%;
-  background-color: rgba(27, 38, 79, 1);
+  padding: 0 1.5%;
+  background-color: #DB2B39;
   a {
     text-decoration: none;
     margin: 0 5px;
@@ -25,19 +25,24 @@ const User = styled.span`
 `;
 
 const Site = styled.div`
-  font-size: 250%;
+  font-size: 300%;
+  font-weight: bold;
   color: white;
 `;
 
 const Button = styled.button`
-  background-color: rgba(27, 38, 79, 1);
-  font-size: 85%;
+  background-color: #DB2B39;
+  font-size: 90%;
   border: 1.5px solid white;
   border-radius: 5px;
-  padding: 6px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 7px;
+  padding-right: 7px;
   color: white;
   :hover {
-    background-color: rgba(87, 108, 168, 1);
+    background-color: white;
+    color: #DB2B39;
   }
 `
 class NavBar extends Component {

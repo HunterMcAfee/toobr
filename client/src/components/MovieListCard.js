@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const MovieListCard = (props) => {
     const movie_list = props.movie_list

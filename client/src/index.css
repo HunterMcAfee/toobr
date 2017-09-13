@@ -1,27 +1,27 @@
 body {
-  margin: 0;
-  padding: 0;
   font-family: 'Ropa Sans', sans-serif;
+  color: rgb(48, 43, 39);
+  background-color: #E5DCC5
 }
 
-.flex-container-row {
-  display: -webkit-flex;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 100vw;
-  height: auto;
+.default-button {
+  background-color: #848FA5;
+  color: white;
+  border: 1.5px solid #848FA5;
+  border-radius: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
-.flex-item {
-  width: 25vw;
-  height: 25vw;
-  margin: 10px;
-}
-
-.flex-container-column {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: column;
-    flex-direction: column;
+.default-button:hover {
+  background-color: white;
+  color: #848FA5;
+  border: 1.5px solid #848FA5;
+  border-radius: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 7px;
+  padding-right: 7px;
 }

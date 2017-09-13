@@ -6,17 +6,19 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ListHeader = styled.div`
-    font-size: 300%;
-    font-weight: bold;
+    font-size: 250%;
     text-align: center;
-    padding-top: 2.5vh;
+    background-color: #2D2D2A;
+    color: white;
+    border-radius: 0px 0px 5px 5px;
+    margin-bottom: 20px;
 `
 
 const ListTitle = styled.div`
+    background-color: #4C4C47;
+    color: white;
     font-size: 200%;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 10px;
+    border-radius: 5px;
     margin-bottom: 10px;
 `
 
@@ -57,32 +59,32 @@ class Lists extends Component {
     
     render() {
         return (
-            <div>
-                <ListHeader>YOUR LISTS</ListHeader>
-                <div className="flex-container-row">
-                    <div className="flex-container-column">
-                        <ListTitle>Movie Lists</ListTitle>
-                        <Link to={`/newMovieList`}><button>New Movie List</button></Link>
-                        {this.state.movie_lists.map( (movie_list) => {
-                            return (
-                                <div className="flex-item">
-                                    <MovieListCard key={movie_list.id} movie_list={movie_list} />
-                                </div>
-                            )
-                        })}
-                    </div>
-
-                    <div className="flex-container-column">
-                        <ListTitle>Show Lists</ListTitle>
-                        <Link to={`/newShowList`}><button>New Show List</button></Link>
-                        {this.state.show_lists.map( (show_list) => {
-                            return (
-                                <div className="flex-item">
-                                    <ShowListCard key={show_list.id} show_list={show_list} />
-                                </div>
-                            )
-                        })}
-                    </div>
+            <div className="container">
+            <ListHeader>YOUR LISTS</ListHeader>
+            <div className="row">
+                <div className="col text-center">
+                <ListTitle>Movie Lists</ListTitle>
+                <Link to={`/newMovieList`}><button className="default-button">New Movie List</button></Link>
+                {this.state.movie_lists.map( (movie_list) => {
+                    return (
+                        <div className="flex-item">
+                            <MovieListCard key={movie_list.id} movie_list={movie_list} />
+                        </div>
+                    )
+                })}
+                </div>
+            
+                <div className="col text-center">
+                <ListTitle>Show Lists</ListTitle>
+                <Link to={`/newShowList`}><button className="default-button">New Show List</button></Link>
+                {this.state.show_lists.map( (show_list) => {
+                    return (
+                        <div className="flex-item">
+                            <ShowListCard key={show_list.id} show_list={show_list} />
+                        </div>
+                    )
+                })}
+                </div>
                 </div>
             </div>
         );
