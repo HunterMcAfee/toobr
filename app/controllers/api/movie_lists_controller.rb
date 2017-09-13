@@ -1,7 +1,8 @@
 class Api::MovieListsController < ApplicationController
     before_action :authenticate_user!
     def index
-        @movie_lists = MovieList.all
+        @user = User.find(current_user.id)
+        @movie_lists = @user.movie_lists
         render json: @movie_lists
     end
 
@@ -15,7 +16,8 @@ class Api::MovieListsController < ApplicationController
     end
 
     def create
-        @movie_list = MovieList.create!(movie_list_params)
+        @user = User.find(current_user.id)
+        @user.movie_lists.create!(movie_list_params)
     end
 
     def update
@@ -30,6 +32,6 @@ class Api::MovieListsController < ApplicationController
 
     private
     def movie_list_params
-        params.require(:movie_list).permit(:title, :category, :description)
+        params.require(:movie_list).permit(:title, :category, :description, :user_id)
     end
 end

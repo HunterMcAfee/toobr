@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
           :omniauthable
   include DeviseTokenAuth::Concerns::User
 
-  has_many :movie_lists
-  has_many :show_lists
+  has_many :movie_lists, dependent: :destroy
+  has_many :show_lists, dependent: :destroy
 
 end
