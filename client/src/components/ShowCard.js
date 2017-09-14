@@ -3,11 +3,12 @@ import React from 'react';
 const ShowCard = (props) => {
     const show = props.show
     return (
-        <div>
-            <img src={`https://image.tmdb.org/t/p/w640${show.poster_path}`} />
-            <div>{show.original_name}</div>
-            <div>{show.overview}</div>
-            <br />
+        <div key={show.id} className="card" style={{width: "15rem", margin: "1.0vw"}}>
+            <img className="card-img-top" src={`https://image.tmdb.org/t/p/w640${show.poster_path}`} alt="No Image Available" />
+            <div className="card-body">
+                <h4 className="card-title">{show.original_name}</h4>
+                <p className="card-text">{show.overview}</p>
+            </div>
         </div>
     );
 };

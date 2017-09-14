@@ -47,6 +47,18 @@ class EditShowList extends Component {
         }
     }
 
+    _deleteShowList = (e) => {
+        e.preventDefault();
+        const id = this.props.match.params.id
+        try {
+            const res = axios.delete(`/api/show_lists/${id}`);
+            return res.data;
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
     render() {
         const id = this.state.show_list.id
         return (
@@ -66,6 +78,8 @@ class EditShowList extends Component {
                     </div>
                     <button onClick={this._editShowList}>Submit</button>
                 </form>
+                <br />
+                <button onClick={this._deleteShowList}>Delete List</button>
                 <br />
                 <Link to={`/show_lists/${id}`}><button>Back</button></Link>
             </div>
