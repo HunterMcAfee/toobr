@@ -2,6 +2,34 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ShowCard from './ShowCard';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const PageHeader = styled.div`
+font-size: 250%;
+text-align: center;
+background-color: #2D2D2A;
+color: white;
+border-radius: 0px 0px 5px 5px;
+margin-bottom: 20px;
+`
+
+const SearchStyle = styled.div`
+input {
+    width: 45vw;
+    margin: 10px;
+    border-radius: 2px;
+    padding: 5px;
+    border: none;
+}
+`
+const ShowTitle = styled.div`
+background-color: #404E5C;
+color: white;
+font-size: 200%;
+margin-top: 20px;
+margin-bottom: 25px;
+text-align: center;
+`
 
 class ShowSearch extends Component {
     constructor() {
@@ -61,25 +89,37 @@ class ShowSearch extends Component {
         const id = this.props.match.params.id
         return (
             <div>
-                <h1>Search for Show</h1>
+                <PageHeader className="row justify-content-center">
+                    Search for Show
+                </PageHeader>
+
+                <div style={{textAlign: "center", marginBottom: "20px"}}>
+                    <Link to={`/show_lists/${id}`}><button className="default-button">Back</button></Link>
+                </div>
+
+                <SearchStyle className="row justify-content-center">
                 <form>
                     <div>
-                        <label htmlFor="search">Search: </label>
                         <input onChange={this._handleChange} type="text" name="search" value={this.state.search} />
+                        <button onClick={this._searchShow} className="default-button">Submit</button>
                     </div>
-                    <button onClick={this._searchShow}>Submit</button>
                 </form>
-                    <h3>Shows:</h3>
+                </SearchStyle>
+
+                <ShowTitle>Shows Found</ShowTitle>
+                <div className="row justify-content-center">
                     {this.state.shows.map( (show) => {
                     return (
                         <div key={show.id}>
-                        <ShowCard key={show.id} show={show} />
-                        <button onClick={() => this._addShow(show)}>Add Show to List</button>
+                            <ShowCard key={show.id} show={show} />
+                            <div style={{display: "flex", justifyContent: "center"}}>
+                                <button onClick={() => this._addShow(show)} className="default-button">Add Show to List</button>
+                            </div>
                         </div>
                     )
                     })}
-                <Link to={`/show_lists/${id}`}><button>Back</button></Link>
-            </div>
+                </div>
+            </div>    
         );
     }
 }
