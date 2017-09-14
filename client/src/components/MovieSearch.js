@@ -26,7 +26,6 @@ const MovieTitle = styled.div`
     background-color: #404E5C;
     color: white;
     font-size: 200%;
-    border-radius: 5px;
     margin-top: 20px;
     margin-bottom: 25px;
     text-align: center;
@@ -99,7 +98,7 @@ class MovieSearch extends Component {
                     Search for Movie
                 </PageHeader>
 
-                <div style={{marginLeft: "20px"}}>
+                <div style={{textAlign: "center", marginBottom: "20px"}}>
                     <Link to={`/movie_lists/${id}`}><button className="default-button">Back</button></Link>
                 </div>
 
