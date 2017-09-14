@@ -2,6 +2,26 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import MovieCard from './MovieCard';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const PageHeader = styled.div`
+    font-size: 250%;
+    text-align: center;
+    background-color: #2D2D2A;
+    color: white;
+    border-radius: 0px 0px 5px 5px;
+    margin-bottom: 20px;
+`
+
+const SearchStyle = styled.div`
+    input {
+        width: 45vw;
+        margin: 10px;
+        border-radius: 2px;
+        padding: 5px;
+        border: none;
+    }
+`
 
 class MovieSearch extends Component {
     constructor() {
@@ -65,25 +85,41 @@ class MovieSearch extends Component {
     render() {
         const id = this.props.match.params.id
         return (
-            <div>
-                <h1>Search for Movie</h1>
-                <form>
-                    <div>
-                        <label htmlFor="search">Search: </label>
-                        <input onChange={this._handleChange} type="text" name="search" value={this.state.search} />
-                    </div>
-                    <button onClick={this._searchMovie}>Submit</button>
-                </form>
-                    <h3>Movies:</h3>
+            <div className="container">
+                <PageHeader className="row justify-content-center">
+                    Search for Movie
+                </PageHeader>
+
+                <div>
+                    <Link to={`/movie_lists/${id}`}><button className="default-button">Back</button></Link>
+                </div>
+
+                <SearchStyle className="row justify-content-center">
+                    <form>
+                        <div>
+                            <input onChange={this._handleChange} type="text" name="search" value={this.state.search} />
+                            <button onClick={this._searchMovie} className="default-button">Submit</button>
+                        </div>   
+                    </form>
+                </SearchStyle>
+
+                <h1>Movies:</h1>
+                <div className="row justify-content-center">
                     {this.state.movies.map( (movie) => {
                     return (
                         <div key={movie.id}>
-                        <MovieCard key={movie.id} movie={movie} />
-                        <button onClick={() => this._addMovie(movie)}>Add Movie to List</button>
+                            <MovieCard movie={movie} />
+                            <div style={{display: "flex", justifyContent: "center"}}>
+                                <button onClick={() => this._addMovie(movie)} className="default-button">Add Movie to List</button>
+                            </div>
                         </div>
                     )
                     })}
-                <Link to={`/movie_lists/${id}`}><button>Back</button></Link>
+                </div>
+
+                <div className="row justify-content-center">
+                    <Link to={`/movie_lists/${id}`}><button className="default-button">Back</button></Link>
+                </div>
             </div>
         );
     }

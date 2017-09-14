@@ -3,11 +3,12 @@ import React from 'react';
 const MovieCard = (props) => {
     const movie = props.movie
     return (
-        <div>
-            <div>{movie.original_title}</div>
-            <img src={`https://image.tmdb.org/t/p/w640${movie.poster_path}`} />
-            <div>{movie.overview}</div>
-            <br />
+        <div key={movie.id} className="card" style={{width: "15rem", margin: "1.0vw"}}>
+            <img className="card-img-top" src={`https://image.tmdb.org/t/p/w640${movie.poster_path}`} alt="No Image Available" />
+            <div className="card-body">
+                <h4 className="card-title">{movie.original_title}</h4>
+                <p className="card-text">{movie.overview}</p>
+            </div>
         </div>
     );
 };

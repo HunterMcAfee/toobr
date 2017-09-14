@@ -15,7 +15,7 @@ const ListHeader = styled.div`
 `
 
 const ListTitle = styled.div`
-    background-color: #4C4C47;
+    background-color: #404E5C;
     color: white;
     font-size: 200%;
     border-radius: 5px;
@@ -75,7 +75,7 @@ class Lists extends Component {
                 </div>
             
                 <div className="col text-center">
-                <ListTitle>Show Lists</ListTitle>
+                <ListTitle>TV Show Lists</ListTitle>
                 <Link to={`/newShowList`}><button className="default-button">New Show List</button></Link>
                 {this.state.show_lists.map( (show_list) => {
                     return (
