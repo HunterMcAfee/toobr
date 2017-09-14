@@ -10,7 +10,6 @@ const ListHeader = styled.div`
     text-align: center;
     background-color: #2D2D2A;
     color: white;
-    border-radius: 0px 0px 5px 5px;
     margin-bottom: 20px;
 `
 
@@ -59,33 +58,37 @@ class Lists extends Component {
     
     render() {
         return (
-            <div className="container">
+            <div>
             <ListHeader>YOUR LISTS</ListHeader>
-            <div className="row">
-                <div className="col text-center">
-                <ListTitle>Movie Lists</ListTitle>
-                <Link to={`/newMovieList`}><button className="default-button">New Movie List</button></Link>
-                {this.state.movie_lists.map( (movie_list) => {
-                    return (
-                        <div className="flex-item">
-                            <MovieListCard key={movie_list.id} movie_list={movie_list} />
-                        </div>
-                    )
-                })}
+
+            <div className="container">
+                <div className="row">
+                    <div className="col text-center">
+                    <ListTitle>Movie Lists</ListTitle>
+                    <Link to={`/newMovieList`}><button className="default-button" style={{marginBottom: "15px"}}>New Movie List</button></Link>
+                    {this.state.movie_lists.map( (movie_list) => {
+                        return (
+                            <div className="flex-item">
+                                <MovieListCard key={movie_list.id} movie_list={movie_list} />
+                            </div>
+                        )
+                    })}
+                    </div>
+                
+                    <div className="col text-center">
+                    <ListTitle>TV Show Lists</ListTitle>
+                    <Link to={`/newShowList`}><button className="default-button" style={{marginBottom: "15px"}}>New Show List</button></Link>
+                    {this.state.show_lists.map( (show_list) => {
+                        return (
+                            <div className="flex-item">
+                                <ShowListCard key={show_list.id} show_list={show_list} />
+                            </div>
+                        )
+                    })}
+                    </div>
                 </div>
-            
-                <div className="col text-center">
-                <ListTitle>TV Show Lists</ListTitle>
-                <Link to={`/newShowList`}><button className="default-button">New Show List</button></Link>
-                {this.state.show_lists.map( (show_list) => {
-                    return (
-                        <div className="flex-item">
-                            <ShowListCard key={show_list.id} show_list={show_list} />
-                        </div>
-                    )
-                })}
-                </div>
-                </div>
+            </div>
+
             </div>
         );
     }

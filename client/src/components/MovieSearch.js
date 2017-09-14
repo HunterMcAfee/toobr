@@ -22,6 +22,15 @@ const SearchStyle = styled.div`
         border: none;
     }
 `
+const MovieTitle = styled.div`
+    background-color: #404E5C;
+    color: white;
+    font-size: 200%;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+`
 
 class MovieSearch extends Component {
     constructor() {
@@ -85,12 +94,12 @@ class MovieSearch extends Component {
     render() {
         const id = this.props.match.params.id
         return (
-            <div className="container">
+            <div>
                 <PageHeader className="row justify-content-center">
                     Search for Movie
                 </PageHeader>
 
-                <div>
+                <div style={{marginLeft: "20px"}}>
                     <Link to={`/movie_lists/${id}`}><button className="default-button">Back</button></Link>
                 </div>
 
@@ -103,7 +112,7 @@ class MovieSearch extends Component {
                     </form>
                 </SearchStyle>
 
-                <h1>Movies:</h1>
+                <MovieTitle>Movies Found</MovieTitle>
                 <div className="row justify-content-center">
                     {this.state.movies.map( (movie) => {
                     return (
