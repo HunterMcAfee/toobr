@@ -2,27 +2,31 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const MovieListCardStyles = styled.div`
-    background-color: #4C4C47;
-    border-radius: 5px;
-    margin-top: 10px;
-    a {
-        text-decoration: none;
-    }
-    h3 {
-        color: white
-    }
+const MovieCardTitle = styled.div`
+    background-color: #2E2E3A;
+    text-decoration: none;
+    font-size: 150%;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+`
+
+const MovieCardContent = styled.div`
+    background-color: #554971;
+    border-radius: 0px 0px 5px 5px;
+    text-decoration: none;
+    color: white;
+    margin-bottom: 20px;
 `
 
 const MovieListCard = (props) => {
     const movie_list = props.movie_list
     return (
-        <MovieListCardStyles>
+        <div>
             <Link to={`/movie_lists/${movie_list.id}`}>
-                <h3>{movie_list.title}</h3>
-                <p>{movie_list.description}</p>
+                <MovieCardTitle>{movie_list.title}</MovieCardTitle>
+                <MovieCardContent>{movie_list.description}</MovieCardContent>
             </Link>
-        </MovieListCardStyles>
+        </div>
     );
 };
 

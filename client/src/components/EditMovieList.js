@@ -47,6 +47,18 @@ class EditMovieList extends Component {
         }
     }
 
+    _deleteMovieList = (e) => {
+        e.preventDefault();
+        const id = this.props.match.params.id
+        try {
+            const res = axios.delete(`/api/movie_lists/${id}`);
+            return res.data;
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
     render() {
         const id = this.state.movie_list.id
         return (
@@ -66,6 +78,8 @@ class EditMovieList extends Component {
                     </div>
                     <button onClick={this._editMovieList}>Submit</button>
                 </form>
+                <br />
+                <button onClick={this._deleteMovieList} className="default-button" style={{marginRight: "20px"}}>Delete List</button>
                 <br />
                 <Link to={`/movie_lists/${id}`}><button>Back</button></Link>
             </div>

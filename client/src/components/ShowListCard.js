@@ -2,27 +2,31 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const ShowListCardStyles = styled.div`
-background-color: #4C4C47;
-border-radius: 5px;
-margin-top: 10px;
-a {
+const ShowCardTitle = styled.div`
+    background-color: #2E2E3A;
     text-decoration: none;
-}
-h3 {
-    color: white
-}
+    font-size: 150%;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+`
+
+const ShowCardContent = styled.div`
+    background-color: #554971;
+    border-radius: 0px 0px 5px 5px;
+    text-decoration: none;
+    color: white;
+    margin-bottom: 20px;
 `
 
 const ShowListCard = (props) => {
     const show_list = props.show_list
     return (
-        <ShowListCardStyles>
+        <div>
             <Link to={`/show_lists/${show_list.id}`}>
-            <h3>{show_list.title}</h3>
-            <p>Description: {show_list.description}</p>
+                <ShowCardTitle>{show_list.title}</ShowCardTitle>
+                <ShowCardContent>{show_list.description}</ShowCardContent>
             </Link>
-        </ShowListCardStyles>
+        </div>
     );
 };
 
