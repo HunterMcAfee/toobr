@@ -1,6 +1,26 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const FormStyles = styled.div`
+    margin-top: 20px;
+    label {
+        font-size: 150%;
+    }
+    input {
+        width: 65vw;
+        margin-bottom: 10px;
+    }
+    textarea {
+        width: 65vw;
+        margin-bottom: 10px;
+    }
+`
+const TitleStyle = styled.div`
+    font-size: 250%;
+    margin-top: 20px;
+`
 
 class NewMovieList extends Component {
     constructor() {
@@ -33,23 +53,36 @@ class NewMovieList extends Component {
     render() {
         return (
             <div>
+                <TitleStyle className="row justify-content-center">
+                    Create a Movie List
+                </TitleStyle>
+
+                <div className="row justify-content-center">
+                <FormStyles>
                 <form>
                     <div>
                         <label htmlFor="title">Title: </label>
+                        <br />
                         <input onChange={this._handleChange} type="text" name="title" value={this.state.movie_list.title} />
                     </div>
                     <div>
                         <label htmlFor="category">Category: </label>
+                        <br />
                         <input onChange={this._handleChange} type="text" name="category" value={this.state.movie_list.category} />
                     </div>
                     <div>
                         <label htmlFor="description">Description: </label>
+                        <br />
                         <textarea onChange={this._handleChange} type="text-area" name="description" value={this.state.movie_list.description} />
                     </div>
-                    <button onClick={this._newMovieList}>Submit</button>
+                    <button onClick={this._newMovieList} className="default-button">Submit</button>
                 </form>
+                </FormStyles>
+                </div>
                 <br />
-                <Link to={`/`}><button>Back</button></Link>
+                <div className="row justify-content-center">
+                <Link to={`/`}><button className="default-button">Back</button></Link>
+                </div>
             </div>
         );
     }

@@ -1,6 +1,26 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const FormStyles = styled.div`
+    margin-top: 20px;
+    label {
+        font-size: 150%;
+    }
+    input {
+        width: 65vw;
+        margin-bottom: 10px;
+    }
+    textarea {
+        width: 65vw;
+        margin-bottom: 10px;
+    }
+`
+const TitleStyle = styled.div`
+    font-size: 250%;
+    margin-top: 20px;
+`
 
 class EditMovieList extends Component {
     constructor() {
@@ -63,25 +83,42 @@ class EditMovieList extends Component {
         const id = this.state.movie_list.id
         return (
             <div>
+                <TitleStyle className="row justify-content-center">
+                    Edit Movie List
+                </TitleStyle>
+
+                <div className="row justify-content-center">
+                <FormStyles>
                 <form>
                     <div>
                         <label htmlFor="title">Title: </label>
+                        <br />
                         <input onChange={this._handleChange} type="text" name="title" value={this.state.movie_list.title} />
                     </div>
                     <div>
                         <label htmlFor="category">Category: </label>
+                        <br />
                         <input onChange={this._handleChange} type="text" name="category" value={this.state.movie_list.category} />
                     </div>
                     <div>
                         <label htmlFor="description">Description: </label>
-                        <input onChange={this._handleChange} type="text" name="description" value={this.state.movie_list.description} />
+                        <br />
+                        <textarea onChange={this._handleChange} type="text" name="description" value={this.state.movie_list.description} />
                     </div>
-                    <button onClick={this._editMovieList}>Submit</button>
+                    <button onClick={this._editMovieList} className="default-button">Submit</button>
                 </form>
+                </FormStyles>
+                </div>
                 <br />
-                <button onClick={this._deleteMovieList} className="default-button" style={{marginRight: "20px"}}>Delete List</button>
-                <br />
-                <Link to={`/movie_lists/${id}`}><button>Back</button></Link>
+
+                <div className="row justify-content-center">
+                    <button onClick={this._deleteMovieList} className="default-button" style={{marginBottom: "20px"}}>Delete List</button>
+                </div>
+                
+                <div className="row justify-content-center">
+                    <Link to={`/movie_lists/${id}`}><button className="default-button">Back</button></Link>
+                </div>
+
             </div>
         );
     }
