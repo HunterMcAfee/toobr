@@ -7,7 +7,7 @@ const MovieCard = (props) => {
             <img className="card-img-top" src={`https://image.tmdb.org/t/p/w640${movie.poster_path}`} alt="No Image Available" />
             <div className="card-body">
                 <h4 className="card-title">{movie.original_title}</h4>
-                <p className="card-text">{movie.overview}</p>
+                <p className="card-text">{ movie.overview ? `${movie.overview.substring(0, 120)}...` : null}</p>
             </div>
         </div>
     );
