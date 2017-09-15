@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 class Movie extends Component {
     constructor() {
@@ -60,17 +61,40 @@ class Movie extends Component {
         const id = this.props.match.params.movie_list_id
         return (
             <div>
-                <img src={`https://image.tmdb.org/t/p/w1000${this.state.movie.poster_path}`} />
-                <h2>Title: {this.state.movie.original_title}</h2>
-                <div>Tagline: {this.state.movie.tagline}</div>
-                <div>Overview: {this.state.movie.overview}</div>
-                <div>Release Date: {this.state.movie.release_date}</div>
-                <div>Budget: {this.state.movie.budget}</div>
-                <div>Rating: {this.state.movie.vote_average}</div>
-                <div>Home Page: {this.state.movie.homepage}</div>
-                <div>Runtime: {this.state.movie.runtime}</div>
-                <button onClick={this._deleteMovie}>Delete Movie</button>
-                <Link to={`/movie_lists/${id}`}><button>Back</button></Link>
+                <div className="container" style={{marginTop: "20px"}}>
+                <div className="row justify-content-center">
+                    <div className="card" style={{width: "60vw"}}>
+                        <img className="card-img-top" src={`https://image.tmdb.org/t/p/w1000${this.state.movie.poster_path}`} alt="No Image Available" />
+                        <div className="card-block">
+                            <h4 className="card-title" style={{textAlign: "center", marginTop: "10px"}}>{this.state.movie.original_title}</h4>
+                            <div className="card-text" style={{textAlign: "center"}}>
+                                <div style={{fontWeight: "bold", fontSize: "125%"}}>Tagline:</div>
+                                <div>{this.state.movie.tagline}</div>
+                                <div style={{fontWeight: "bold", fontSize: "125%"}}>Overview:</div>
+                                <div>{this.state.movie.overview}</div>
+                                <div style={{fontWeight: "bold", fontSize: "125%"}}>Release Date:</div>
+                                <div>{this.state.movie.release_date}</div>
+                                <div style={{fontWeight: "bold", fontSize: "125%"}}>Budget:</div>
+                                <div>{this.state.movie.budget}</div>
+                                <div style={{fontWeight: "bold", fontSize: "125%"}}>Rating:</div>
+                                <div>{this.state.movie.vote_average}</div>
+                                <div style={{fontWeight: "bold", fontSize: "125%"}}>Home Page:</div>
+                                <div><a href={this.state.movie.homepage}>{this.state.movie.homepage}</a></div>
+                                <div style={{fontWeight: "bold", fontSize: "125%"}}>Runtime:</div>
+                                <div>{this.state.movie.runtime} min.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="row justify-content-center">
+                    <button onClick={this._deleteMovie} className="default-button" style={{marginTop: "10px", marginBottom: "10px"}}>Delete Movie</button>
+                </div>
+
+                <div className="row justify-content-center">
+                <Link to={`/movie_lists/${id}`}><button className="default-button" style={{marginBottom: "10px"}}>Back</button></Link>
+                </div>
+                </div>
             </div>
         );
     }
