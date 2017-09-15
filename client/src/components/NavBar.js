@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const Nav = styled.div`
   width: 100%;
-  height: 70px;
+  min-height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -72,7 +72,6 @@ class NavBar extends Component {
   _logOut = async () => {
     console.log("CLICK");
     const response = await axios.delete("/auth/sign_out");
-    //Forces refresh of browser
     window.location.reload();
   };
 
@@ -80,12 +79,12 @@ class NavBar extends Component {
     if (this.state.loggedIn) {
       return (
         <Nav>
-          <Link to="/">
+          <Link to="/lists">
             <Site>toobr</Site>
           </Link>
           <div>
             <User>Signed In As: {this.state.user.email}</User>
-            <a href="#" onClick={this._logOut}><Button>Log Out</Button></a>
+            <a href="/" onClick={this._logOut}><Button>Log Out</Button></a>
           </div>
         </Nav>
       );

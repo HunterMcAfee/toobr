@@ -81,7 +81,7 @@ class NewShowList extends Component {
                 </div>
                 <br />
                 <div className="row justify-content-center">
-                <Link to={`/`}><button className="default-button">Back</button></Link>
+                <Link to={`/lists`}><button className="default-button">Back</button></Link>
                 </div>
             </div>
         );

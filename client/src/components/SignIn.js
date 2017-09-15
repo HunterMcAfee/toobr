@@ -49,7 +49,7 @@ _signIn = async (e) => {
 
  render() {
    if (this.state.redirect){
-     return <Redirect to="/" />
+     return <Redirect to="/lists" />
    }
    return (
       <div>

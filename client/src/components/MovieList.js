@@ -55,7 +55,7 @@ class MovieList extends Component {
             <div>
                 <div style={{display: "flex", justifyContent: "space-between", marginTop: "10px"}}>
                     <div>
-                    <Link to={`/`}><button className="default-button" style={{marginLeft: "20px"}}>Back</button></Link>
+                    <Link to={`/lists`}><button className="default-button" style={{marginLeft: "20px"}}>Back</button></Link>
                     </div>
                     <div>
                     <Link to={`/movie_lists/${id}/edit`}><button className="default-button" style={{marginRight: "20px"}}>Edit</button></Link>

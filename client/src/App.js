@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import NavBar from './components/NavBar';
+import Home from './components/Home';
 
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
@@ -30,7 +31,8 @@ class App extends Component {
           <Route exact path="/signUp" component={SignUp} />
           <Route exact path="/signIn" component={SignIn} />
 
-          <Route exact path="/" component={Lists} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/lists" component={Lists} />
 
           <Route exact path="/movie_lists/:id" component={MovieList} />
           <Route exact path="/newMovieList" component={NewMovieList} />
