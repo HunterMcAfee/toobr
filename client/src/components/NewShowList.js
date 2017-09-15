@@ -44,7 +44,7 @@ class NewShowList extends Component {
                     </div>
                     <div>
                         <label htmlFor="description">Description: </label>
-                        <input onChange={this._handleChange} type="text" name="description" value={this.state.show_list.description} />
+                        <textarea onChange={this._handleChange} type="text" name="description" value={this.state.show_list.description} />
                     </div>
                     <button onClick={this._newShowList}>Submit</button>
                 </form>

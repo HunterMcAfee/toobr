@@ -79,6 +79,7 @@ class MovieSearch extends Component {
         }
         try {
             const res = axios.post(`/api/movie_lists/${id}/movies`, payload)
+            alert(`${movie.original_title} was added to your list!`);
         } catch (err) {
             console.log(err);
         }

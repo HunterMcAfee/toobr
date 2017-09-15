@@ -74,6 +74,7 @@ class ShowSearch extends Component {
         }
         try {
             const res = axios.post(`/api/show_lists/${id}/shows`, payload)
+            alert(`${show.original_name} was added to your list!`);
         } catch (err) {
             console.log(err);
         }
@@ -119,6 +120,11 @@ class ShowSearch extends Component {
                     )
                     })}
                 </div>
+
+                <div className="row justify-content-center">
+                    <Link to={`/show_lists/${id}`}><button className="default-button">Back</button></Link>
+                </div>
+
             </div>    
         );
     }

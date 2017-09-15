@@ -44,7 +44,7 @@ class NewMovieList extends Component {
                     </div>
                     <div>
                         <label htmlFor="description">Description: </label>
-                        <input onChange={this._handleChange} type="text" name="description" value={this.state.movie_list.description} />
+                        <textarea onChange={this._handleChange} type="text-area" name="description" value={this.state.movie_list.description} />
                     </div>
                     <button onClick={this._newMovieList}>Submit</button>
                 </form>
