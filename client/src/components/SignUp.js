@@ -2,6 +2,22 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 import { setAxiosHeaders } from '../util';
+import styled from 'styled-components';
+
+const FormStyles = styled.div`
+margin-top: 20px;
+label {
+    font-size: 150%;
+}
+input {
+    width: 65vw;
+    margin-bottom: 20px;
+}
+`
+const TitleStyle = styled.div`
+font-size: 250%;
+margin-top: 20px;
+`
 
 class SignUp extends Component {
  constructor(){
@@ -42,25 +58,42 @@ class SignUp extends Component {
      return <Redirect to="/" />
    }
    return (
-     <div>
-       <form onSubmit={this._signUp}>
-         <div>
-           <label htmlFor="email">E-mail: </label>
-           <input onChange={this._handleChange} type="text" name="email" value={this.state.email} />
-         </div>
-         <div>
-           <label htmlFor="password">Password: </label>
-           <input onChange={this._handleChange} type="password" name="password" value={this.state.password} />
-         </div>
-         <div>
-           <label htmlFor="password">Confirm Password: </label>
-           <input onChange={this._handleChange} type="password" name="password_confirmation" value={this.state.password_confirmation} />
-         </div>
-         
-         <button>Sign Up</button>
-         <Link to="/signin">Sign In</Link>
-       </form>
-     </div>
+    <div>
+      <TitleStyle className="row justify-content-center">
+                  Sign Up
+      </TitleStyle>
+
+      <div className="row justify-content-center">
+        <FormStyles>
+          <form onSubmit={this._signUp}>
+
+            <div>
+              <label htmlFor="email">E-mail: </label>
+              <br />
+              <input onChange={this._handleChange} type="text" name="email" value={this.state.email} />
+            </div>
+
+            <div>
+              <label htmlFor="password">Password: </label>
+              <br />
+              <input onChange={this._handleChange} type="password" name="password" value={this.state.password} />
+            </div>
+
+            <div>
+              <label htmlFor="password">Confirm Password: </label>
+              <br />
+              <input onChange={this._handleChange} type="password" name="password_confirmation" value={this.state.password_confirmation} />
+            </div>
+
+            <div style={{display: "flex", justifyContent: "space-between"}}>
+              <button className="default-button">Sign Up</button>
+              <Link to="/signin"><button className="default-button">Sign In</button></Link>
+            </div>
+
+          </form>
+        </FormStyles>
+      </div>
+    </div>
    );
  }
 }
