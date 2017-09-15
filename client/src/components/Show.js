@@ -60,17 +60,39 @@ class Show extends Component {
         const id = this.props.match.params.show_list_id
         return (
             <div>
-                <img src={`https://image.tmdb.org/t/p/w1000${this.state.show.poster_path}`} />
-                <h2>Title: {this.state.show.original_name}</h2>
-                <div>Tagline: {this.state.show.tagline}</div>
-                <div>Overview: {this.state.show.overview}</div>
-                <div>First Air Date: {this.state.show.first_air_date}</div>
-                <div>Rating: {this.state.show.vote_average}</div>
-                <div>Home Page: {this.state.show.homepage}</div>
-                <div>Number of Seasons: {this.state.show.number_of_seasons}</div>
-                <button onClick={this._deleteShow}>Delete Show</button>
-                <Link to={`/show_lists/${id}`}><button>Back</button></Link>
+            <div className="container" style={{marginTop: "20px"}}>
+            <div className="row justify-content-center">
+                <div className="card" style={{width: "60vw"}}>
+                    <img className="card-img-top" src={`https://image.tmdb.org/t/p/w1000${this.state.show.poster_path}`} alt="No Image Available" />
+                    <div className="card-block">
+                        <h4 className="card-title" style={{textAlign: "center", marginTop: "10px"}}>{this.state.show.original_name}</h4>
+                        <div className="card-text" style={{textAlign: "center"}}>
+                            <div style={{fontWeight: "bold", fontSize: "125%"}}>Tagline:</div>
+                            <div>{this.state.show.tagline}</div>
+                            <div style={{fontWeight: "bold", fontSize: "125%"}}>Overview:</div>
+                            <div>{this.state.show.overview}</div>
+                            <div style={{fontWeight: "bold", fontSize: "125%"}}>First Air Date:</div>
+                            <div>{this.state.show.first_air_date}</div>
+                            <div style={{fontWeight: "bold", fontSize: "125%"}}>Rating:</div>
+                            <div>{this.state.show.vote_average}</div>
+                            <div style={{fontWeight: "bold", fontSize: "125%"}}>Home Page:</div>
+                            <div><a href={this.state.show.homepage}>{this.state.show.homepage}</a></div>
+                            <div style={{fontWeight: "bold", fontSize: "125%"}}>Number of Seasons:</div>
+                            <div>{this.state.show.number_of_seasons}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <div className="row justify-content-center">
+                <button onClick={this._deleteShow} className="default-button" style={{marginTop: "10px", marginBottom: "10px"}}>Delete Show</button>
+            </div>
+
+            <div className="row justify-content-center">
+            <Link to={`/show_lists/${id}`}><button className="default-button" style={{marginBottom: "10px"}}>Back</button></Link>
+            </div>
+            </div>
+        </div>
         );
     }
 }
