@@ -1,24 +1,36 @@
-# README
+# toobr
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Heroku Link: https://toobr.herokuapp.com/
 
-Things you may want to cover:
+ERD: https://imgur.com/zJm9Ber.jpg
 
-* Ruby version
+##Application Wireframe 
 
-* System dependencies
+<a href="https://i.imgur.com/80HSM05"><img src="https://i.imgur.com/80HSM05.jpg" title="source: imgur.com" /></a>
 
-* Configuration
+## App Overview
 
-* Database creation
+toobr is an application where the user can create their own movie and tv viewing lists.  toobr utilizes The Movie DB API in order to pull in movie and tv information.  The application was built using React as the front end framework, PostgresQL for the database, and Rails for the back end.
 
-* Database initialization
+User Stories:  https://trello.com/b/RdaCbpmt/toobr
 
-* How to run the test suite
+## Future Development
 
-* Services (job queues, cache servers, search engines, etc.)
+ * Checkbox of movies watched
+ * Discover movies and shows based off saved titles
 
-* Deployment instructions
+## Technologies Used
 
-* ...
+ * Heroku
+ * PostgresQL
+ * Ruby
+ * Rails
+ * React
+ * HTML5
+ * CSS3
+ * Styled Components
+ * JavaScript
+ * Google Fonts
+ * Trello
+ * Imgur
+ * VS Code Editor
