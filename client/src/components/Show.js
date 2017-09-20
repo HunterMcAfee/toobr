@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class Show extends Component {
     constructor() {
         super();
         this.state = {
             showDB: {},
-            show: {}
+            show: {},
+            redirect: false
         }
     }
 
@@ -44,12 +45,12 @@ class Show extends Component {
         }
     }
 
-    _deleteShow = (e) => {
+    _deleteShow = async (e) => {
         e.preventDefault();
         const id = this.props.match.params.show_list_id
         try {
-            const res = axios.delete(`/api/show_lists/${id}/shows/${this.state.showDB.id}`);
-            return res;
+            const res = await axios.delete(`/api/show_lists/${id}/shows/${this.state.showDB.id}`);
+            this.setState({redirect: true})
         }
         catch (err) {
             console.log(err)
@@ -58,6 +59,9 @@ class Show extends Component {
 
     render() {
         const id = this.props.match.params.show_list_id
+        if (this.state.redirect) {
+            return <Redirect to={`/show_lists/${id}`} />            
+        } else {
         return (
             <div>
             <div className="container" style={{marginTop: "20px"}}>
@@ -94,6 +98,7 @@ class Show extends Component {
             </div>
         </div>
         );
+    }
     }
 }
 

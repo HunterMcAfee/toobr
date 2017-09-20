@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 class Movie extends Component {
@@ -8,7 +8,8 @@ class Movie extends Component {
         super();
         this.state = {
             movieDB: {},
-            movie: {}
+            movie: {},
+            redirect: false
         }
     }
 
@@ -45,12 +46,12 @@ class Movie extends Component {
         }
     }
 
-    _deleteMovie = (e) => {
+    _deleteMovie = async (e) => {
         e.preventDefault();
         const id = this.props.match.params.movie_list_id
         try {
             const res = axios.delete(`/api/movie_lists/${id}/movies/${this.state.movieDB.id}`);
-            return res;
+            this.setState({redirect: true})
         }
         catch (err) {
             console.log(err)
@@ -59,6 +60,9 @@ class Movie extends Component {
 
     render() {
         const id = this.props.match.params.movie_list_id
+        if (this.state.redirect) {
+            return <Redirect to={`/movie_lists/${id}`} />
+        } else {
         return (
             <div>
                 <div className="container" style={{marginTop: "20px"}}>
@@ -97,6 +101,7 @@ class Movie extends Component {
                 </div>
             </div>
         );
+        }
     }
 }
 
