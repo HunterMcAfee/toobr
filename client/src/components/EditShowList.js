@@ -31,7 +31,8 @@ class EditShowList extends Component {
                 category: '',
                 description: ''
             },
-            redirect: false
+            redirect: false,
+            redirectDelete: false
         }
     }
 
@@ -74,7 +75,7 @@ class EditShowList extends Component {
         const id = this.props.match.params.id
         try {
             const res = axios.delete(`/api/show_lists/${id}`);
-            return res.data;
+            this.setState({redirectDelete: true})
         }
         catch (err) {
             console.log(err)
@@ -85,6 +86,8 @@ class EditShowList extends Component {
         const id = this.state.show_list.id
         if (this.state.redirect) {
             return <Redirect to={`/show_lists/${id}`} />
+        } else if (this.state.redirectDelete) {
+            return <Redirect to={`/lists`} />
         } else {
         return (
             <div>
