@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 const FormStyles = styled.div`
@@ -30,7 +30,8 @@ class NewShowList extends Component {
                 title: '',
                 category: '',
                 description: ''
-            }
+            },
+            redirect: false
         }
     }
 
@@ -40,17 +41,21 @@ class NewShowList extends Component {
         this.setState({show_list: newState})
     }
 
-    _newShowList = (e) => {
+    _newShowList = async (e) => {
         e.preventDefault();
         const payload = this.state.show_list
         try {
-            const res = axios.post(`/api/show_lists`, payload)
+            const res = await axios.post(`/api/show_lists`, payload)
+            this.setState({redirect: true})
         } catch (err) {
             console.log(err)
         }
     }
 
     render() {
+        if (this.state.redirect) {
+            return <Redirect to={`/lists`} />
+        } else {
         return (
             <div>
                 <TitleStyle className="row justify-content-center">
@@ -85,6 +90,7 @@ class NewShowList extends Component {
                 </div>
             </div>
         );
+    }
     }
 }
 
