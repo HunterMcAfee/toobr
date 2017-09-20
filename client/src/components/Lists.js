@@ -78,9 +78,9 @@ class Lists extends Component {
                     <div className="col text-center">
                     <ListTitle>TV Show Lists</ListTitle>
                     <Link to={`/newShowList`}><button className="default-button" style={{marginBottom: "15px"}}>New Show List</button></Link>
-                    {this.state.show_lists.map( (show_list) => {
+                    {this.state.show_lists.map( (show_list, i) => {
                         return (
-                            <div className="flex-item">
+                            <div key={i} className="flex-item">
                                 <ShowListCard key={show_list.id} show_list={show_list} />
                             </div>
                         )

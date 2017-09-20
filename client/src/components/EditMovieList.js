@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 const FormStyles = styled.div`
@@ -30,7 +30,9 @@ class EditMovieList extends Component {
                 title: '',
                 category: '',
                 description: ''
-            }
+            },
+            redirect: false,
+            redirectDelete: false
         }
     }
 
@@ -56,23 +58,24 @@ class EditMovieList extends Component {
         this.setState({movie_list: newState})
     }
 
-    _editMovieList = (e) => {
+    _editMovieList = async (e) => {
         e.preventDefault();
         const id = this.props.match.params.id
         const payload = this.state.movie_list
         try {
-            const res = axios.patch(`/api/movie_lists/${id}`, payload)
+            const res = await axios.patch(`/api/movie_lists/${id}`, payload)
+            this.setState({redirect: true})
         } catch (err) {
             console.log(err)
         }
     }
 
-    _deleteMovieList = (e) => {
+    _deleteMovieList = async (e) => {
         e.preventDefault();
         const id = this.props.match.params.id
         try {
-            const res = axios.delete(`/api/movie_lists/${id}`);
-            return res.data;
+            const res = await axios.delete(`/api/movie_lists/${id}`);
+            this.setState({redirectDelete: true})
         }
         catch (err) {
             console.log(err)
@@ -81,6 +84,11 @@ class EditMovieList extends Component {
 
     render() {
         const id = this.state.movie_list.id
+        if (this.state.redirect) {
+            return <Redirect to={`/movie_lists/${id}`} />
+        } else if (this.state.redirectDelete) {
+            return <Redirect to={`/lists`} />
+        } else {
         return (
             <div>
                 <TitleStyle className="row justify-content-center">
@@ -121,6 +129,7 @@ class EditMovieList extends Component {
 
             </div>
         );
+    }
     }
 }
 

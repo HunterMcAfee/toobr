@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 const FormStyles = styled.div`
@@ -30,7 +30,8 @@ class EditShowList extends Component {
                 title: '',
                 category: '',
                 description: ''
-            }
+            },
+            redirect: false
         }
     }
 
@@ -56,12 +57,13 @@ class EditShowList extends Component {
         this.setState({show_list: newState})
     }
 
-    _editShowList = (e) => {
+    _editShowList = async (e) => {
         e.preventDefault();
         const id = this.props.match.params.id
         const payload = this.state.show_list
         try {
-            const res = axios.patch(`/api/show_lists/${id}`, payload)
+            const res = await axios.patch(`/api/show_lists/${id}`, payload)
+            this.setState({redirect: true})
         } catch (err) {
             console.log(err)
         }
@@ -81,6 +83,9 @@ class EditShowList extends Component {
 
     render() {
         const id = this.state.show_list.id
+        if (this.state.redirect) {
+            return <Redirect to={`/show_lists/${id}`} />
+        } else {
         return (
             <div>
                 <TitleStyle className="row justify-content-center">
@@ -121,6 +126,7 @@ class EditShowList extends Component {
 
             </div>
         );
+    }
     }
 }
 
