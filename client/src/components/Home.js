@@ -24,6 +24,8 @@ const TitleStyle = styled.div`
     font-size: 300%;
     background-color: #2D2D2A;
     color: white;
+    margin-top: 15vh;
+    margin-bottom: 30px;
 `
 
 // const HomeStyle = styled.div`
@@ -39,7 +41,7 @@ class Home extends Component {
     render() {
         return (
             <div className="container">
-            <TitleStyle className="row justify-content-center" style={{marginTop: "50px", marginBottom: "20px", borderRadius: "5px"}}>
+            <TitleStyle className="row justify-content-center" style={{borderRadius: "5px"}}>
                 Welcome to toobr!
             </TitleStyle>  
 
