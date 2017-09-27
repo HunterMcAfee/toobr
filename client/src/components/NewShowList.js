@@ -31,7 +31,8 @@ class NewShowList extends Component {
                 category: '',
                 description: ''
             },
-            redirect: false
+            redirect: false,
+            errors: []
         }
     }
 
@@ -47,8 +48,12 @@ class NewShowList extends Component {
         try {
             const res = await axios.post(`/api/show_lists`, payload)
             this.setState({redirect: true})
-        } catch (err) {
-            console.log(err)
+        } catch (res) {
+            this.setState({errors: [
+                    "Title must be between 1 and 25 characters.",
+                    "Category must be between 1 and 25 characters.",
+                    "Description must be between 1 and 120 characters."
+                ]})
         }
     }
 
@@ -58,6 +63,14 @@ class NewShowList extends Component {
         } else {
         return (
             <div>
+                <div>
+                    {this.state.errors.map( (error, i) => {
+                    return (
+                        <h1 key={i} style={{textAlign: "center", color: "red", marginTop: "10px"}}>{error}</h1>
+                        )
+                    })}
+                </div>
+
                 <TitleStyle className="row justify-content-center">
                     Create a Show List
                 </TitleStyle>

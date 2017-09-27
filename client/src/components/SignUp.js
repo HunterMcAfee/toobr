@@ -26,7 +26,8 @@ class SignUp extends Component {
        email: '',
        password: '',
        password_confirmation: '',
-       redirect: false
+       redirect: false,
+       errors: []
    }
  }
 
@@ -37,9 +38,14 @@ class SignUp extends Component {
      password: this.state.password,
      password_confirmation: this.state.password_confirmation
    }
-   const response = await axios.post('/auth', payload);
-   setAxiosHeaders(response.headers);
-   this.setState({redirect: true})
+   try {
+    const response = await axios.post('/auth', payload);
+    setAxiosHeaders(response.headers);
+    this.setState({redirect: true})
+   }
+   catch (res) {
+    this.setState({errors: res.response.data.errors.full_messages})
+  }
  }
 
  _signIn = (e) => {
@@ -59,6 +65,14 @@ class SignUp extends Component {
    }
    return (
     <div>
+      <div>
+        {this.state.errors.map( (error) => {
+          return (
+            <h1 style={{textAlign: "center", color: "red", marginTop: "10px"}}>{error}</h1>
+            )
+        })}
+      </div>
+
       <TitleStyle className="row justify-content-center">
                   Sign Up
       </TitleStyle>

@@ -26,7 +26,8 @@ class SignUp extends Component {
    this.state = {
        email: '',
        password: '',
-       redirect: false
+       redirect: false,
+       errors: []
    }
  }
 
@@ -36,9 +37,14 @@ _signIn = async (e) => {
     email: this.state.email,
     password: this.state.password,
   }
+  try {
   const response = await axios.post('/auth/sign_in', payload);
   setAxiosHeaders(response.headers);
   this.setState({redirect: true})
+  }
+  catch (res) {
+    this.setState({errors: res.response.data.errors})
+  }
 }
 
  _handleChange = (e) => {
@@ -52,6 +58,15 @@ _signIn = async (e) => {
      return <Redirect to="/lists" />
    }
    return (
+      <div>
+      <div>
+        {this.state.errors.map( (error) => {
+          return (
+            <h1 style={{textAlign: "center", color: "red", marginTop: "10px"}}>{error}</h1>
+            )
+        })}
+      </div>
+
       <div>
       <TitleStyle className="row justify-content-center">
                   Sign In
@@ -80,6 +95,7 @@ _signIn = async (e) => {
           </form>
         </FormStyles>
       </div>
+    </div>
     </div>
    );
  }
