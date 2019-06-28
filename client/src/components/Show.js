@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
+import MovieDBConstants from './constants/MovieDBContants.js';
 
 class Show extends Component {
     constructor() {
@@ -67,7 +68,7 @@ class Show extends Component {
             <div className="container" style={{marginTop: "20px"}}>
             <div className="row justify-content-center">
                 <div className="card" style={{width: "60vw"}}>
-                    <img className="card-img-top" src={`https://image.tmdb.org/t/p/w1000${this.state.show.poster_path}`} alt="No Image Available" />
+                    <img className="card-img-top" src={`${MovieDBConstants.LARGE_POSTER_URL}${this.state.show.poster_path}`} alt="No Image Available" />
                     <div className="card-block">
                         <h4 className="card-title" style={{textAlign: "center", marginTop: "10px"}}>{this.state.show.original_name}</h4>
                         <div className="card-text" style={{textAlign: "center"}}>
